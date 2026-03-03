@@ -11,15 +11,28 @@ const Footer = () => (
           © {new Date().getFullYear()} Aditya Mangal. AI Systems Architecture & Consulting.
         </p>
         <div className="flex gap-6">
-          {["LinkedIn", "GitHub", "Email"].map((item) => (
-            <a
-              key={item}
-              href="#"
-              className="text-sm text-muted-foreground transition-colors hover:text-foreground"
-            >
-              {item}
-            </a>
-          ))}
+          <a
+            href="https://www.linkedin.com/in/aditya-mangal/"
+            target="_blank"
+            rel="noreferrer"
+            className="text-sm text-muted-foreground transition-colors hover:text-foreground"
+          >
+            LinkedIn
+          </a>
+          <a
+            href="https://x.com/mangal_aditya_"
+            target="_blank"
+            rel="noreferrer"
+            className="text-sm text-muted-foreground transition-colors hover:text-foreground"
+          >
+            X
+          </a>
+          <a
+            href="mailto:adityamangal98@gmail.com"
+            className="text-sm text-muted-foreground transition-colors hover:text-foreground"
+          >
+            Email
+          </a>
         </div>
       </div>
     </div>

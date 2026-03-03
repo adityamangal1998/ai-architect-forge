@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Send, Building2, Mail, User, MessageSquare } from "lucide-react";
+import { Send, Building2, Mail, User, MessageSquare, Linkedin, Phone } from "lucide-react";
 import AnimatedSection from "@/components/AnimatedSection";
 import { toast } from "sonner";
 
@@ -28,6 +28,56 @@ const Contact = () => {
             <p className="mt-4 text-lg text-muted-foreground">
               Open to selective collaborations, advisory engagements, and AI system architecture consulting.
             </p>
+
+            <div className="mt-8 grid gap-4 sm:grid-cols-2">
+              <a
+                href="mailto:adityamangal98@gmail.com"
+                className="glass-card flex items-center gap-3 p-4 transition-colors hover:border-primary/30"
+              >
+                <Mail size={18} className="text-primary" />
+                <div>
+                  <p className="text-sm font-medium text-foreground">Email</p>
+                  <p className="text-sm text-muted-foreground">adityamangal98@gmail.com</p>
+                </div>
+              </a>
+
+              <a
+                href="tel:+918619131789"
+                className="glass-card flex items-center gap-3 p-4 transition-colors hover:border-primary/30"
+              >
+                <Phone size={18} className="text-primary" />
+                <div>
+                  <p className="text-sm font-medium text-foreground">Phone</p>
+                  <p className="text-sm text-muted-foreground">+91 8619131789</p>
+                </div>
+              </a>
+
+              <a
+                href="https://www.linkedin.com/in/aditya-mangal/"
+                target="_blank"
+                rel="noreferrer"
+                className="glass-card flex items-center gap-3 p-4 transition-colors hover:border-primary/30"
+              >
+                <Linkedin size={18} className="text-primary" />
+                <div>
+                  <p className="text-sm font-medium text-foreground">LinkedIn</p>
+                  <p className="text-sm text-muted-foreground">/in/aditya-mangal</p>
+                </div>
+              </a>
+
+              <a
+                href="https://x.com/mangal_aditya_"
+                target="_blank"
+                rel="noreferrer"
+                className="glass-card flex items-center gap-3 p-4 transition-colors hover:border-primary/30"
+              >
+                <MessageSquare size={18} className="text-primary" />
+                <div>
+                  <p className="text-sm font-medium text-foreground">X</p>
+                  <p className="text-sm text-muted-foreground">@mangal_aditya_</p>
+                </div>
+              </a>
+            </div>
           </AnimatedSection>
 
           <AnimatedSection delay={0.2}>

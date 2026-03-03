@@ -3,6 +3,8 @@ import { Link, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
+import profileImage from "../../images/profile.png";
+
 const navItems = [
   { label: "Home", path: "/" },
   { label: "About", path: "/about" },
@@ -34,8 +36,14 @@ const Navbar = () => {
       }`}
     >
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6 lg:px-8">
-        <Link to="/" className="font-display text-xl font-bold tracking-tight">
-          <span className="gradient-text">AM</span>
+        <Link to="/" className="inline-flex items-center" aria-label="Go to home">
+          <img
+            src={profileImage}
+            alt="Aditya Mangal"
+            className="h-12 w-12 rounded-full border border-border bg-muted object-cover ring-2 ring-primary/30 md:h-[7.5rem] md:w-[7.5rem]"
+            loading="eager"
+            decoding="async"
+          />
         </Link>
 
         {/* Desktop */}

@@ -1,6 +1,8 @@
 import { GraduationCap, Building2, Award, Users } from "lucide-react";
 import AnimatedSection from "@/components/AnimatedSection";
 
+import profileImage from "../../images/profile.png";
+
 const milestones = [
   { icon: GraduationCap, title: "Gold Medalist — IIIT Surat", desc: "Electronics & Communication Engineering. Top of class with distinction." },
   { icon: Building2, title: "Senior Data Scientist — Genzeon", desc: "Leading AI initiatives across healthcare document intelligence, VLM pipelines, and multi-agent systems." },
@@ -20,6 +22,22 @@ const About = () => (
 
       <div className="mt-16 grid gap-16 lg:grid-cols-2">
         <div className="space-y-6">
+          <AnimatedSection delay={0.05}>
+            <div className="glass-card inline-flex items-center gap-4 p-4">
+              <img
+                src={profileImage}
+                alt="Aditya Mangal"
+                className="h-16 w-16 rounded-full border border-border bg-muted object-cover"
+                loading="lazy"
+                decoding="async"
+              />
+              <div>
+                <p className="font-display text-lg font-semibold text-foreground">Aditya Mangal</p>
+                <p className="text-sm text-muted-foreground">AI Systems Architecture · Agentic AI</p>
+              </div>
+            </div>
+          </AnimatedSection>
+
           <AnimatedSection delay={0.1}>
             <p className="text-lg leading-relaxed text-muted-foreground">
               I'm driven by a singular mission: transforming AI research into production systems that deliver measurable business impact. My work sits at the intersection of large language models, computer vision, and scalable distributed systems.

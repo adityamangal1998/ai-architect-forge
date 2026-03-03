@@ -3,6 +3,8 @@ import { ArrowRight, Cpu, Brain, Server, HeartPulse } from "lucide-react";
 import AnimatedSection from "@/components/AnimatedSection";
 import { motion } from "framer-motion";
 
+import bannerImage from "../../images/banner.png";
+
 const metrics = [
   { value: "4+", label: "Years Experience", icon: Cpu },
   { value: "25+", label: "Production AI Systems", icon: Server },
@@ -14,6 +16,17 @@ const Home = () => (
   <div className="neural-bg min-h-screen">
     {/* Hero */}
     <section className="relative flex min-h-screen items-center">
+      {/* Banner */}
+      <div className="pointer-events-none absolute inset-0 -z-10">
+        <img
+          src={bannerImage}
+          alt=""
+          className="h-full w-full object-cover opacity-10"
+          loading="eager"
+          decoding="async"
+        />
+      </div>
+
       {/* Decorative orbs */}
       <div className="pointer-events-none absolute left-1/4 top-1/4 h-96 w-96 rounded-full opacity-20 blur-3xl" style={{ background: "var(--gradient-primary)" }} />
       <div className="pointer-events-none absolute bottom-1/4 right-1/4 h-64 w-64 rounded-full bg-accent/10 blur-3xl" />
