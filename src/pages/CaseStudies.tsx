@@ -14,49 +14,49 @@ interface CaseStudy {
 
 const studies: CaseStudy[] = [
   {
-    title: "Healthcare Document Intelligence",
-    subtitle: "End-to-end AI pipeline for medical document processing at scale",
-    problem: "A network of hospitals processing 500K+ medical documents monthly — discharge summaries, lab reports, prescriptions — with 90% still handled manually. Error rates exceeded 15%, creating compliance risks and delayed patient care.",
-    architecture: "Designed a multi-stage pipeline: Document Classification (ResNet) → Layout Analysis (YOLO) → Zone-specific OCR → Medical NER (BioBERT fine-tuned) → Structured FHIR output. Each stage independently scalable with Kafka message queues between stages.",
-    strategy: "Fine-tuned domain-specific models on 50K annotated medical documents. Implemented active learning loops where low-confidence predictions were routed to human reviewers, continuously improving model accuracy. Used ensemble methods for critical fields.",
-    deployment: "Containerized with Docker, orchestrated via Kubernetes on AWS EKS. Auto-scaling based on document queue depth. GPU nodes for inference, CPU nodes for pre/post-processing. Monitoring via Prometheus + Grafana with custom medical accuracy dashboards.",
+    title: "Healthcare Intelligent Document Processing",
+    subtitle: "HIpOne at Genzeon: medical records to structured data for US healthcare workflows",
+    problem: "Claims processing, utilization management and prior-authorization workflows in US healthcare depended on line-by-line manual review of long, multi-page medical records with mixed layouts, handwriting, signatures and checkboxes.",
+    architecture: "Ingestion → BERT-based page classification with rule-based entity extraction → custom-trained YOLO models detecting structural elements (titles, sections, signatures, checkboxes) → VLM-based OCR that uses that layout context → LLM-assisted extraction with contextual validation → human-in-the-loop review.",
+    strategy: "Domain-adapted small language models (e.g. Mistral) for medical entity extraction, with LLM-driven data augmentation to stay robust on limited annotated data. Layout detection feeds the OCR stage so extraction keeps document context.",
+    deployment: "Distributed microservices orchestrated on Apache Airflow for scheduling, monitoring and large-scale parallel processing. Centralised structlog logging and automated unit-testing utilities as shared QA infrastructure across services.",
     impact: [
-      "95.2% extraction accuracy across all document types",
-      "80% reduction in manual processing time",
-      "Processing capacity: 50K documents/day",
-      "ROI: $2.3M annual cost savings across 3 hospital networks",
+      "Production integrations with US healthcare clients",
+      "End-to-end automation of ingestion, classification and structured extraction",
+      "Workflows that previously needed line-by-line manual review",
+      "Led the data-science team delivering the platform",
     ],
-    stack: ["Python", "PyTorch", "YOLO", "BioBERT", "Kafka", "Docker", "Kubernetes", "AWS EKS", "PostgreSQL", "Redis"],
+    stack: ["Python", "BERT", "YOLO", "VLMs", "Mistral", "LLMs", "Apache Airflow", "structlog"],
   },
   {
-    title: "RAG-based Insurance Information Extractor",
-    subtitle: "Intelligent document understanding for insurance policy analysis",
-    problem: "Insurance companies processing complex policy documents with nested clauses, cross-references, and domain-specific terminology. Manual extraction taking 45+ minutes per document with inconsistent results across analysts.",
-    architecture: "Document Ingestion → Intelligent Chunking (layout-aware) → Vector Embedding (domain fine-tuned) → Multi-index RAG with metadata filtering → LLM extraction with structured output validation → Human-in-the-loop review for edge cases.",
-    strategy: "Built a custom chunking strategy that respects document structure (sections, clauses, sub-clauses). Fine-tuned embedding models on insurance corpus. Implemented GPU-optimized inference with batching for throughput. Used Kafka for async processing and AWS Auto Scaling for demand spikes.",
-    deployment: "Microservices architecture with Docker containers. Kafka for event-driven processing. AWS Auto Scaling groups with GPU instances (g4dn) for inference. Redis for caching frequently accessed policy templates. PostgreSQL for structured output storage.",
+    title: "Insurance AI Platform: InSa-Engine & Know Your Policy",
+    subtitle: "Insurance Samadhan: scaling claims-lifecycle AI with microservices and RAG",
+    problem: "AI features across the insurance claims lifecycle ran on a tightly coupled engine that was hard to scale, and key information in long insurance policy documents had to be extracted accurately for policy management and regulatory compliance.",
+    architecture: "InSa-Engine re-architected into decoupled, Dockerised microservices sharing storage over Amazon EFS and communicating through Apache Kafka. RAG + LLM extraction for policy documents; a VLM pipeline for tables in scanned documents; a configurable Information Extractor returning query-based key-value answers from NER and YAML-driven rules.",
+    strategy: "Retrieval-augmented generation to ground extraction in the relevant policy sections. Fine-tuned Qwen2.5-VL-3B on PubTables-1M for table detection and cell segmentation. Rules kept configurable (YAML) so new fields didn't need code changes.",
+    deployment: "GPU-aware server scaling algorithm on AWS Auto Scaling to raise inference throughput and lower compute cost. Production integrations with major Indian financial-services platforms. Engineering process aligned for ISO certification.",
     impact: [
-      "93% field-level extraction accuracy across 15 insurance providers",
-      "Processing time reduced from 45 min to 3 min per document",
-      "Handles 10K+ documents daily with auto-scaling",
-      "40+ policy fields extracted automatically",
+      "Led a team of 6 engineers across architecture, delivery and code quality",
+      "Shipped the end-to-end Know Your Policy (KYP) feature",
+      "Better scalability and inter-service reliability after the re-architecture",
+      "Promoted from Research Engineer to Senior Research Engineer",
     ],
-    stack: ["LangChain", "ChromaDB", "GPT-4", "Kafka", "Docker", "AWS Auto Scaling", "Redis", "PostgreSQL", "FastAPI"],
+    stack: ["Python", "RAG", "LLMs", "Qwen2.5-VL", "NER", "Docker", "Apache Kafka", "Amazon EFS", "AWS Auto Scaling"],
   },
   {
-    title: "Multi-Agent Automation Framework",
-    subtitle: "Autonomous AI agents collaborating like a software engineering team",
-    problem: "Engineering teams spending 60% of time on repetitive tasks: writing boilerplate code, running tests, reviewing PRs, and generating documentation. Need for an autonomous system that handles routine development workflows.",
-    architecture: "Four specialized agents orchestrated via LangGraph: Planner Agent (decomposes tasks into actionable steps) → Coder Agent (generates code with context awareness) → Reviewer Agent (static analysis + best practices check) → Tester Agent (generates and runs test suites). Shared memory via vector store for context persistence.",
-    strategy: "Each agent has a specialized system prompt and tool access. The Planner uses chain-of-thought reasoning to break down complex tasks. Coder has access to the full codebase via RAG. Reviewer implements a rubric-based scoring system. Tester generates both unit and integration tests. Feedback loops allow iterative refinement.",
-    deployment: "Deployed as a GitHub App that triggers on PR events. Each agent runs in isolated containers with specific resource limits. LangGraph manages state transitions and error recovery. Monitoring tracks agent performance metrics and decision quality.",
+    title: "OCR Built from the Ground Up",
+    subtitle: "Eigenlytics: production OCR and document-image models for FinTech automation",
+    problem: "FinTech decision-automation software needed text from real-world images and scans: skewed pages, noise, watermarks, and a mix of handwritten and printed text, in more than one language.",
+    architecture: "CTC-based text recognition model → multi-level skew correction → handwritten-vs-printed classifier (texture, text style, pixel density and text-flow features) → image restoration (SRGAN, LapSRN, denoising autoencoders) → Transformer-based Hindi-to-English translation and transliteration of OCR output.",
+    strategy: "Each failure mode got its own model rather than one model doing everything: correct the geometry first, clean the image, then route text by type. An image-quality assessment model flagged inputs that needed restoration.",
+    deployment: "Models powered decision automation in the company's FinTech software, alongside face-recognition and object-detection models.",
     impact: [
-      "60% reduction in QA cycle time",
-      "Automated regression testing for 12 microservices",
-      "Code review coverage increased to 100%",
-      "Developer satisfaction score improved by 35%",
+      "90–95% word-recognition accuracy on scene-based datasets",
+      "90–95% skew-correction accuracy",
+      "94–97% handwritten vs. printed classification on real-world data",
+      "Promoted from Associate Data Scientist to Research Engineer",
     ],
-    stack: ["LangGraph", "CrewAI", "GPT-4", "Claude", "GitHub API", "Docker", "Python", "Selenium", "PostgreSQL"],
+    stack: ["Python", "PyTorch", "TensorFlow", "CTC", "OpenCV", "SRGAN", "LapSRN", "Transformers"],
   },
 ];
 
@@ -69,7 +69,7 @@ const CaseStudies = () => (
           Case <span className="gradient-text">Studies</span>
         </h1>
         <p className="mt-4 max-w-2xl text-lg text-muted-foreground">
-          Detailed analysis of complex AI systems — from problem definition through architecture, deployment, and measurable business impact.
+          Detailed analysis of complex AI systems — from problem definition through architecture, deployment and outcomes.
         </p>
       </AnimatedSection>
 
@@ -92,8 +92,8 @@ const CaseStudies = () => (
                 {[
                   { label: "Problem", content: study.problem },
                   { label: "Architecture", content: study.architecture },
-                  { label: "Model Strategy & Deployment", content: study.strategy },
-                  { label: "Infrastructure", content: study.deployment },
+                  { label: "Approach", content: study.strategy },
+                  { label: "Deployment", content: study.deployment },
                 ].map((s) => (
                   <div key={s.label}>
                     <h3 className="font-mono text-xs uppercase tracking-wider text-primary">{s.label}</h3>
@@ -106,7 +106,7 @@ const CaseStudies = () => (
               <div className="border-t border-border/50 p-8">
                 <div className="grid gap-8 lg:grid-cols-2">
                   <div>
-                    <h3 className="font-mono text-xs uppercase tracking-wider text-primary">Business Impact</h3>
+                    <h3 className="font-mono text-xs uppercase tracking-wider text-primary">Outcomes</h3>
                     <ul className="mt-3 space-y-2">
                       {study.impact.map((item) => (
                         <li key={item} className="flex items-start gap-2 text-sm text-foreground">

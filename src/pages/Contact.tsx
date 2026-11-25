@@ -12,8 +12,16 @@ const Contact = () => {
       toast.error("Please fill in all required fields.");
       return;
     }
-    toast.success("Message sent. I'll be in touch soon.");
-    setForm({ name: "", email: "", org: "", message: "" });
+    const subject = `Website enquiry from ${form.name.trim()}`;
+    const body = [
+      form.message.trim(),
+      "",
+      `Name: ${form.name.trim()}`,
+      `Email: ${form.email.trim()}`,
+      form.org.trim() ? `Organization: ${form.org.trim()}` : "",
+    ].filter(Boolean).join("\n");
+    window.location.href = `mailto:adityamangal98@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    toast.success("Opening your email app with the message ready to send.");
   };
 
   return (
@@ -23,10 +31,10 @@ const Contact = () => {
           <AnimatedSection>
             <p className="font-mono text-sm uppercase tracking-wider text-primary">Connect</p>
             <h1 className="mt-4 font-display text-4xl font-bold tracking-tight sm:text-5xl">
-              Let's Build <span className="gradient-text">Intelligent Systems</span> Together
+              Let's <span className="gradient-text">Talk AI</span>
             </h1>
             <p className="mt-4 text-lg text-muted-foreground">
-              Open to selective collaborations, advisory engagements, and AI system architecture consulting.
+              Happy to talk about LLM systems, agentic AI and document intelligence, and about speaking or mentoring.
             </p>
 
             <div className="mt-8 grid gap-4 sm:grid-cols-2">
@@ -132,15 +140,15 @@ const Contact = () => {
                   onChange={(e) => setForm({ ...form, message: e.target.value })}
                   rows={5}
                   className="w-full resize-none rounded-lg border border-border bg-muted/50 px-4 py-3 text-sm text-foreground outline-none transition-colors focus:border-primary"
-                  placeholder="Tell me about your project or collaboration idea..."
+                  placeholder="What would you like to talk about?"
                   maxLength={2000}
                 />
               </div>
               <button type="submit" className="btn-primary w-full justify-center">
-                Send Message <Send size={16} />
+                Send via Email <Send size={16} />
               </button>
               <p className="text-center text-xs text-muted-foreground">
-                For enterprise discussions & AI advisory partnerships.
+                This opens your email app with the message filled in.
               </p>
             </form>
           </AnimatedSection>

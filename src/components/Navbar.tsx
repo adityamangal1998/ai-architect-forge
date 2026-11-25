@@ -11,7 +11,7 @@ const navItems = [
   { label: "AI Systems", path: "/projects" },
   { label: "Case Studies", path: "/case-studies" },
   { label: "Insights", path: "/insights" },
-  { label: "Collaborate", path: "/contact" },
+  { label: "Contact", path: "/contact" },
 ];
 
 const Navbar = () => {

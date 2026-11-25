@@ -8,7 +8,7 @@ const Footer = () => (
           <span className="gradient-text">Aditya Mangal</span>
         </Link>
         <p className="text-sm text-muted-foreground">
-          © {new Date().getFullYear()} Aditya Mangal. AI Systems Architecture & Consulting.
+          © {new Date().getFullYear()} Aditya Mangal. Senior AI Engineer · LLM Systems & Document AI.
         </p>
         <div className="flex gap-6">
           <a
@@ -18,6 +18,22 @@ const Footer = () => (
             className="text-sm text-muted-foreground transition-colors hover:text-foreground"
           >
             LinkedIn
+          </a>
+          <a
+            href="https://github.com/adityamangal1998"
+            target="_blank"
+            rel="noreferrer"
+            className="text-sm text-muted-foreground transition-colors hover:text-foreground"
+          >
+            GitHub
+          </a>
+          <a
+            href="https://huggingface.co/adityamangal98"
+            target="_blank"
+            rel="noreferrer"
+            className="text-sm text-muted-foreground transition-colors hover:text-foreground"
+          >
+            Hugging Face
           </a>
           <a
             href="https://x.com/mangal_aditya_"
