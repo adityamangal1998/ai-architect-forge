@@ -1,7 +1,7 @@
 import { GraduationCap, Building2, Award, Users } from "lucide-react";
 import AnimatedSection from "@/components/AnimatedSection";
 
-import profileImage from "../../images/profile.png";
+import profileImage from "../../images/profile.webp";
 
 const milestones = [
   { icon: GraduationCap, title: "Gold Medalist — IIIT Surat", desc: "Electronics & Communication Engineering. Top of class with distinction." },

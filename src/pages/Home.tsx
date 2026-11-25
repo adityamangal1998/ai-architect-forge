@@ -3,7 +3,7 @@ import { ArrowRight, Cpu, Brain, Server, HeartPulse } from "lucide-react";
 import AnimatedSection from "@/components/AnimatedSection";
 import { motion } from "framer-motion";
 
-import bannerImage from "../../images/banner.png";
+import bannerImage from "../../images/banner.webp";
 
 const metrics = [
   { value: "4+", label: "Years Experience", icon: Cpu },

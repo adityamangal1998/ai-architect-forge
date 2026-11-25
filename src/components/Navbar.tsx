@@ -3,7 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
-import profileImage from "../../images/profile.png";
+import profileImage from "../../images/profile.webp";
 
 const navItems = [
   { label: "Home", path: "/" },
